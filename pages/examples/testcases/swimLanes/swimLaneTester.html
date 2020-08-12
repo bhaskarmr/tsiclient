@@ -176,8 +176,8 @@
                     console.log(aggKey, splitBy, ts, measures);
                 }
 
-                var chartDataOptions = [{dataType: 'numeric', searchSpan: searchSpan, swimLane: 1}, 
-                            {dataType: 'numeric', searchSpan: searchSpan, swimLane: 2}, 
+                var chartDataOptions = [{dataType: 'numeric', searchSpan: searchSpan, swimLane: 1, yExtent: [0, 10]}, 
+                            {dataType: 'numeric', searchSpan: searchSpan, swimLane: 2, yExtent: [0, 5]}, 
                             {dataType: 'categorical', valueMapping: valueMapping, height: 50, searchSpan: searchSpan, onElementClick: onElementClick, swimLane: 3},
                             {dataType: 'events', valueMapping: eventValueMapping, height: 30, eventElementType: 'teardrop', onElementClick: onElementClick, swimLane: 4},
                             {dataType: 'numeric', searchSpan: searchSpan, onElementClick: onElementClick, swimLane: 5}]; 

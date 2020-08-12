@@ -1133,6 +1133,19 @@ class LineChart extends TemporalXAxisComponent {
                 }
             });
         });
+
+        //If yAxisState is set to shared with only one swimmer, overwrite with custom yExtent chartDataOption (if set)
+        visibleCDOs.forEach(cDO => {
+            // if custom yExtent set
+            if(cDO.yExtent){
+                // if only swimmer in lane
+                let swimmers = visibleCDOs.map(el => el.swimLane);
+                if(swimmers.indexOf(cDO.swimLane) == swimmers.lastIndexOf(cDO.swimLane)){
+                    extents[cDO.swimLane] = cDO.yExtent;
+                }
+            }
+        });
+
         this.swimlaneYExtents = extents;
     }
 
