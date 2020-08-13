@@ -6,57 +6,127 @@
 
         <!-- boilerplate headers are injected with head.js, grab them from the live example header, or include a link to head.js -->
         <script src="../../boilerplate/head.js"></script>
+        <style>
+            .controls{
+                display: flex;
+                flex-direction: row;
+            }
+            .controlItem{
+                margin: 20px 20px 20px 20px;
+                height: 200px;
+            }
+            .controlItem > input{
+                width: 40px;
+            }
+            .controlItem > span{
+                font-weight: bold;
+            }
+        </style>
     </head>
     <body style="font-family: 'Segoe UI', sans-serif;">
         <div id="chart1" style="width: 100%; height: 600px;"></div>
-        <div>
-            <h2>Lane selections:</h2>
-            <span>group 0: </span>
-            <select id='group0Select'>
-                <option selected>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
-            <br/>
-            <span>group 1: </span>
-            <select id='group1Select'>
-                <option>1</option>
-                <option selected>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
-            <br/>
-            <span>group 2: </span>
-            <select id='group2Select'>
-                <option>1</option>
-                <option>2</option>
-                <option selected>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
-            <br/>
-            <span>group 3: </span>
-            <select id='group3Select'>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option selected>4</option>
-                <option>5</option>
-            </select>
-            <br/>
-            <span>group 4: </span>
-            <select id='group4Select'>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option selected>5</option>
-            </select>
+        <div class="controls">
+            <div class="controlItem">
+                <h2>Lane selections:</h2>
+                <span>group 0: </span>
+                <select id='group0Select'>
+                    <option selected>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <br/>
+                <span>group 1: </span>
+                <select id='group1Select'>
+                    <option>1</option>
+                    <option selected>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <br/>
+                <span>group 2: </span>
+                <select id='group2Select'>
+                    <option>1</option>
+                    <option>2</option>
+                    <option selected>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <br/>
+                <span>group 3: </span>
+                <select id='group3Select'>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option selected>4</option>
+                    <option>5</option>
+                </select>
+                <br/>
+                <span>group 4: </span>
+                <select id='group4Select'>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option selected>5</option>
+                </select>
+            </div>
+            <div class="controlItem">
+                <h2>Lane yAxisType:</h2>
+                <span>lane 1: </span>
+                <select id='lane1option'>
+                    <option>stacked</option>
+                    <option>shared</option>
+                    <option selected>overlap</option>
+                </select>
+                <br/>
+                <span>lane 2: </span>
+                <select id='lane2option'>
+                    <option>stacked</option>
+                    <option selected>shared</option>
+                    <option>overlap</option>
+                </select>
+                <br/>
+                <span>lane 3: </span>
+                <select id='lane3option'>
+                    <option>stacked</option>
+                    <option selected>shared</option>
+                    <option>overlap</option>
+                </select>
+            </div>
+            <div class="controlItem">
+                <h2>yExtents:</h2>
+                <span>group 0:</span>
+                <label>Min </label><input type="number" id='group0YMin' name='0'>
+                <label>Max </label><input type="number" id='group0YMax' name='0'>
+                <button type="button" value="0" onclick="yExtentUpdate(0, document.getElementById('group0YMin').value, document.getElementById('group0YMax').value)">Update</button>
+                <br/>
+                <span>group 1:</span>
+                <label>Min </label><input type="number" id='group1YMin' name='1'>
+                <label>Max </label><input type="number" id='group1YMax' name='1'>
+                <button type="button" value="1" onclick="yExtentUpdate(1, document.getElementById('group1YMin').value, document.getElementById('group1YMax').value)">Update</button>
+                <br/>
+                <span>group 2:</span>
+                <label>Min </label><input type="number" id='group2YMin' name='2'>
+                <label>Max </label><input type="number" id='group2YMax' name='2'>
+                <button type="button" value="2" onclick="yExtentUpdate(2, document.getElementById('group2YMin').value, document.getElementById('group2YMax').value)">Update</button>
+                <br/>
+                <span>group 3:</span>
+                <label>Min </label><input type="number" id='group3YMin' name='3'>
+                <label>Max </label><input type="number" id='group3YMax' name='3'>
+                <button type="button" value="3" onclick="yExtentUpdate(3, document.getElementById('group3YMin').value, document.getElementById('group3YMax').value)">Update</button>
+                <br/>
+                <span>group 4:</span>
+                <label>Min </label><input type="number" id='group4YMin' name='4'>
+                <label>Max </label><input type="number" id='group4YMax' name='4'>
+                <button type="button" value="4" onclick="yExtentUpdate(4, document.getElementById('group4YMin').value, document.getElementById('group4YMax').value)">Update</button>
+                <br/>
+            </div>
         </div>
         <script>
+            let yExtentUpdate = null;
             window.onload = function() {
                 // create fake data in the shape our charts expect
                 let numberOfBuckets = 120;
@@ -176,16 +246,16 @@
                     console.log(aggKey, splitBy, ts, measures);
                 }
 
-                var chartDataOptions = [{dataType: 'numeric', searchSpan: searchSpan, swimLane: 1, yExtent: [0, 10]}, 
-                            {dataType: 'numeric', searchSpan: searchSpan, swimLane: 2, yExtent: [0, 5]}, 
+                var chartDataOptions = [{dataType: 'numeric', searchSpan: searchSpan, swimLane: 1}, 
+                            {dataType: 'numeric', searchSpan: searchSpan, swimLane: 2}, 
                             {dataType: 'categorical', valueMapping: valueMapping, height: 50, searchSpan: searchSpan, onElementClick: onElementClick, swimLane: 3},
                             {dataType: 'events', valueMapping: eventValueMapping, height: 30, eventElementType: 'teardrop', onElementClick: onElementClick, swimLane: 4},
                             {dataType: 'numeric', searchSpan: searchSpan, onElementClick: onElementClick, swimLane: 5}]; 
 
-                var swimLaneOptions = {
+                let swimLaneOptions = {
                     1: {yAxisType: 'overlap'},
                     2: {yAxisType: 'shared'},
-                    3: {yAxisType: 'overlap'} 
+                    3: {yAxisType: 'shared'} 
                 }
 
                 var renderLinechart = function () {
@@ -199,11 +269,34 @@
                     renderLinechart();
                 }
 
+                function changeSwimLaneOptionAndRender(swimlane, yAxisType){
+                    swimLaneOptions[swimlane].yAxisType = yAxisType;
+                    renderLinechart();
+                }
+
+                yExtentUpdate = (group, yMin, yMax) => {
+                    yMin = Number(yMin);
+                    yMax = Number(yMax);
+                    if(!isNaN(yMin) && !isNaN(yMax) && yMax > yMin){
+                        chartDataOptions[group].yExtent = [yMin, yMax]
+                    } else {
+                        delete chartDataOptions[group].yExtent;
+                    }
+                    renderLinechart();
+                }
+
+                // Group change listeners
                 document.getElementById(`group0Select`).onchange = function(evt) { changeSwimLaneAndRender(0, Number(evt.target.value))};
                 document.getElementById(`group1Select`).onchange = function(evt) { changeSwimLaneAndRender(1, Number(evt.target.value))};
                 document.getElementById(`group2Select`).onchange = function(evt) { changeSwimLaneAndRender(2, Number(evt.target.value))};
                 document.getElementById(`group3Select`).onchange = function(evt) { changeSwimLaneAndRender(3, Number(evt.target.value))};
                 document.getElementById(`group4Select`).onchange = function(evt) { changeSwimLaneAndRender(4, Number(evt.target.value))};
+
+                // Lane option change listeners
+                document.getElementById(`lane1option`).onchange = function(evt) { changeSwimLaneOptionAndRender(1, evt.target.value)}
+                document.getElementById(`lane2option`).onchange = function(evt) { changeSwimLaneOptionAndRender(2, evt.target.value)}
+                document.getElementById(`lane3option`).onchange = function(evt) { changeSwimLaneOptionAndRender(3, evt.target.value)}
+
 
             };
         </script>
