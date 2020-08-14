@@ -88,8 +88,13 @@ class LinePlot extends Plot {
             aggLine = d3.line()
                 .curve(this.chartComponentData.displayState[aggKey].interpolationFunction ? d3[this.chartComponentData.displayState[aggKey].interpolationFunction] : this.chartOptions.interpolationFunction)
                 .defined((d: any) =>  {
-                    return (d.measures !== null) && 
-                            (d.measures[this.chartComponentData.getVisibleMeasure(d.aggregateKey, d.splitBy)] !== null);
+                    if((d.measures !== null) && (d.measures[this.chartComponentData.getVisibleMeasure(d.aggregateKey, d.splitBy)] !== null)){
+                        if(!agg.clipOutsideYExtent) return true;
+                        let dVal = d.measures[this.chartComponentData.getVisibleMeasure(d.aggregateKey, d.splitBy)];
+                        return dVal >= yExtent[0] && dVal <= yExtent[1] ? true : false
+                    }else{
+                        return false;
+                    }
                 })
                 .x((d: any) => this.getXPosition(d, this.x))
                 .y((d: any) => {                 

@@ -29,6 +29,7 @@ class ChartDataOptions {
     public positionXVariableName: string;
     public positionYVariableName: string;
     public image: string;
+    public clipOutsideYExtent: boolean = false;
 
     constructor (optionsObject: Object){
         this.searchSpan = Utils.getValueOrDefault(optionsObject, 'searchSpan');
@@ -56,6 +57,7 @@ class ChartDataOptions {
         this.positionXVariableName = Utils.getValueOrDefault(optionsObject, 'positionXVariableName', null);
         this.positionYVariableName = Utils.getValueOrDefault(optionsObject, 'positionYVariableName', null);
         this.image = Utils.getValueOrDefault(optionsObject, 'image', null);
+        this.clipOutsideYExtent = Utils.getValueOrDefault(optionsObject, 'clipOutsideYExtent', false);
     }
 }
 export {ChartDataOptions}
